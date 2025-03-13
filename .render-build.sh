@@ -8,3 +8,5 @@ composer install --no-dev --optimize-autoloader
 # Esegui le migrazioni (se necessarie)
 echo "Running Artisan Migrations..."
 php artisan migrate --force
+
+
