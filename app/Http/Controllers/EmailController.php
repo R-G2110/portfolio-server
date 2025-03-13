@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log; 
 use App\Mail\ContactMail;
 
 class EmailController extends Controller
@@ -22,7 +23,7 @@ class EmailController extends Controller
             Mail::to(config('mail.from.address'))->send(new ContactMail($data));
             return response()->json(['message' => 'Email sent successfully'], 200);
         } catch (\Exception $e) {
-            \Log::error('Errore nell\'invio dell\'email: '.$e->getMessage());
+            Log::error('Errore nell\'invio dell\'email: ' . $e->getMessage());
             return response()->json([
                 'message' => 'Failed to send email',
                 'error'   => $e->getMessage()
